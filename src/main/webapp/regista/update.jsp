@@ -80,5 +80,15 @@
 	<!-- end container -->	
 	</main>
 	<jsp:include page="../footer.jsp" />
+	
+	<script type="text/javascript">
+	window.onload = function () {
+		caricaSesso()
+	}
+	
+	function caricaSesso() {
+		document.getElementById('sesso').value = '${registaDaModificare.sesso}';
+	}
+	</script>
 </body>
 </html>
