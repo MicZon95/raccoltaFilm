@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,8 +47,8 @@
 						<div class="form-row">	
 							<div class="form-group col-md-6">
 								<label>Data di Pubblicazione</label>
-                        		<input class="form-control" id="dataPubblicazione" type="date" placeholder="dd/MM/yy"
-                            		title="formato : gg/mm/aaaa"  name="dataPubblicazione" >
+                        		<input class="form-control" id="dataPubblicazione" type="date" name="dataPubblicazione"
+                            		value = "<fmt:formatDate type="date" value="${filmDaModificare.dataPubblicazione}" pattern="yyyy-MM-dd" />">
 							</div>
 							<div class="form-group col-md-6">
 								<label>Durata (minuti)</label>
