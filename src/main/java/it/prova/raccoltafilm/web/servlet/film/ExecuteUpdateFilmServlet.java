@@ -37,6 +37,8 @@ public class ExecuteUpdateFilmServlet extends HttpServlet {
 		String minutiDurata = request.getParameter("minutiDurata");
 		String registaId = request.getParameter("regista.id");
 		
+		String idFilm = request.getParameter("idFilm");
+		
 		Date dataPubblicazioneParam = UtilityForm.parseDateArrivoFromString(dataPubblicazione);
 		
 		if (!UtilityForm.validateFilmFormInput(titolo, genere, minutiDurata, dataPubblicazione,
@@ -44,11 +46,15 @@ public class ExecuteUpdateFilmServlet extends HttpServlet {
 			request.setAttribute("errorMessage", "Attenzione sono presenti errori di validazione");
 			request.getRequestDispatcher("/film/update.jsp").forward(request, response);
 		}
-		
-		Film filmInstance = new Film(titolo, genere, dataPubblicazioneParam,
-				Integer.parseInt(minutiDurata), new Regista(Long.parseLong(registaId)));
+		 
 		
 		try {
+			Film filmInstance = MyServiceFactory.getFilmServiceInstance().caricaSingoloElemento(Long.parseLong(idFilm));
+			filmInstance.setDataPubblicazione(dataPubblicazioneParam);
+			filmInstance.setGenere(genere);
+			filmInstance.setMinutiDurata(Integer.parseInt(minutiDurata));
+			filmInstance.setRegista(MyServiceFactory.getRegistaServiceInstance().caricaSingoloElemento(Long.parseLong(registaId)));
+			filmInstance.setTitolo(titolo);
 			
 			MyServiceFactory.getFilmServiceInstance().aggiorna(filmInstance);
 			

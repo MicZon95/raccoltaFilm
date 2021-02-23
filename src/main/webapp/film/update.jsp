@@ -51,7 +51,7 @@
 							</div>
 							<div class="form-group col-md-6">
 								<label>Durata (minuti)</label>
-								<input type="number" class="form-control" name="minutiDurata" id="minutiDurata" >
+								<input type="number" class="form-control" name="minutiDurata" id="minutiDurata" value="${filmDaModificare.minutiDurata}" >
 							</div>
 						</div>
 						<div class="form-row">	
@@ -65,7 +65,7 @@
 							    </select>
 							</div>
 						</div>
-							
+							<input type="text" name="idFilm" id="idFilm" value="${filmDaModificare.id}" hidden>
 						<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
 						<a href="ExecuteListFilmServlet" class='btn btn-outline-secondary' style='width:80px'>
 		            		<i class='fa fa-chevron-left'></i> Back
