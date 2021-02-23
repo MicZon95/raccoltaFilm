@@ -85,6 +85,17 @@
 	</main>
 	<jsp:include page="../footer.jsp" />
 	
+	
+	<script type="text/javascript">
+	
+	window.onload = function () {
+		caricaRegista()
+	}
+	
+	function caricaRegista() {
+		document.getElementById('regista.id').value = '${filmDaModificare.regista.id}';
+	}
+	</script>
 <body>
 
 </body>
