@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.Date" %>
 <!doctype html>
 <html lang="it">
 <head>
@@ -45,7 +46,7 @@
 							<div class="form-group col-md-6">
 								<label>Data di Pubblicazione</label>
                         		<input class="form-control" id="dataPubblicazione" type="date" placeholder="dd/MM/yy"
-                            		title="formato : gg/mm/aaaa"  name="dataPubblicazione" >
+                            		title="formato : gg/mm/aaaa"  name="dataPubblicazione">
 							</div>
 							<div class="form-group col-md-6">
 								<label>Durata (minuti)</label>
@@ -78,6 +79,22 @@
 	<!-- end container -->	
 	</main>
 	<jsp:include page="../footer.jsp" />
+	
+	<script type="text/javascript">
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	 if(dd<10){
+	        dd='0'+dd
+	    } 
+	    if(mm<10){
+	        mm='0'+mm
+	    } 
+
+	today = yyyy+'-'+mm+'-'+dd;
+	document.getElementById("dataPubblicazione").setAttribute("max", today);
+	</script>
 	
 </body>
 </html>

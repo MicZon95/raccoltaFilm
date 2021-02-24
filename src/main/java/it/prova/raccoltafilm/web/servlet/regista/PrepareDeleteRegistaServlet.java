@@ -25,7 +25,7 @@ public class PrepareDeleteRegistaServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-String idRegista = request.getParameter("idRegista");
+		String idRegista = request.getParameter("idRegista");
 		
 		if(!NumberUtils.isCreatable(idRegista)) {
 			request.setAttribute("errorMessage", "Si è verificato un errore");

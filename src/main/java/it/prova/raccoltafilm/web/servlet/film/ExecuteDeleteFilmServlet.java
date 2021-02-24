@@ -1,4 +1,4 @@
-package it.prova.raccoltafilm.web.servlet.regista;
+package it.prova.raccoltafilm.web.servlet.film;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,17 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.prova.raccoltafilm.model.Regista;
+import it.prova.raccoltafilm.model.Film;
 import it.prova.raccoltafilm.service.MyServiceFactory;
 
 /**
- * Servlet implementation class ExecuteDeleteRegistaServlet
+ * Servlet implementation class ExecuteDeleteFilmServlet
  */
-@WebServlet("/ExecuteDeleteRegistaServlet")
-public class ExecuteDeleteRegistaServlet extends HttpServlet {
+@WebServlet("/ExecuteDeleteFilmServlet")
+public class ExecuteDeleteFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ExecuteDeleteRegistaServlet() {
+    public ExecuteDeleteFilmServlet() {
         super();
     }
 
@@ -25,20 +25,22 @@ public class ExecuteDeleteRegistaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String idRegista = request.getParameter("idRegista");
-
+		String idFilm = request.getParameter("idFilm");
+		
 		try {
-			Regista regista = MyServiceFactory.getRegistaServiceInstance()
-					.caricaSingoloElemento(Long.parseLong(idRegista));
-			MyServiceFactory.getRegistaServiceInstance().rimuovi(regista);
-			response.sendRedirect("ExecuteListRegistaServlet?operationResult=SUCCESS");
+			Film film = MyServiceFactory.getFilmServiceInstance().caricaSingoloElementoEager(Long.parseLong(idFilm));
+			System.out.println("sono qui");
+			System.out.println(film);
+			MyServiceFactory.getFilmServiceInstance().rimuovi(film);
+			response.sendRedirect("ExecuteListFilmServlet?operationResult=SUCCESS");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("/regista/delete.jsp").forward(request, response);
+			request.getRequestDispatcher("/film/delete.jsp").forward(request, response);
 			
 		}
 	}
