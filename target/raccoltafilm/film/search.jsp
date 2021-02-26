@@ -54,8 +54,8 @@
 						</div>
 						<div class="form-row">	
 							<div class="form-group col-md-6">
-								<label for="regista.id">Regista</label>
-							    <select class="form-control" id="regista.id" name="regista.id">
+								<label for="idRegista">Regista</label>
+							    <select class="form-control" id="idRegista" name="idRegista">
 							    	<option value=""> -- Selezionare una voce -- </option>
 							      	<c:forEach items="${registi_list_attribute }" var="registaItem">
 							      		<option value="${registaItem.id}">${registaItem.nome } ${registaItem.cognome }</option>
