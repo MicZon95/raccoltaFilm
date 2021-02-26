@@ -99,7 +99,6 @@ public class FilmDAOImpl implements FilmDAO {
 		}
 
 		return typedQuery.getResultList();
-
 	}
 
 }
